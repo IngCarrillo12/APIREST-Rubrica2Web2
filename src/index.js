@@ -5,6 +5,9 @@ import { PORT } from './config.js';
 
 const app =  express();
 app.use(express.json())
+app.get('/', (req, res)=>{
+    res.send('WELCOME!')
+})
 app.use('/',routerRooms)
 app.use('/',routerBookings)
 app.listen(PORT, ()=>{console.log(`Servidor ejecutandose!! http://localhost:${PORT}`)})
