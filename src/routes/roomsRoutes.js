@@ -7,4 +7,5 @@ routerRooms.get('/rooms', getAllRooms)
 routerRooms.get('/rooms/:id', getByIdRooms)
 routerRooms.post('/rooms',createRoom)
 routerRooms.put('/rooms/:id', updateRoom)
+
 export default routerRooms;

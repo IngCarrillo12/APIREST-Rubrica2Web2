@@ -75,3 +75,19 @@ export const deleteBooking = async(req, res)=>{
     }
 
 }
+
+export const bookingCompleteById = async(req,res)=>{
+    try {
+        const {id} = req.params
+        const [response] = await pool.query('SELECT * FROM reservas INNER JOIN habitaciones ON habitaciones.idhabitaciones = reservas.idhabitaciones WHERE  idreservas = ?', [id]);
+        if(response.length===0){
+            return res.status(404).send({message: 'No se encontraron reservas'})
+        }
+        res.status(200).send(response)
+    } catch (error) {
+        const message = errors(error.errno)
+        console.log(message)
+        res.status(500).send({error: error})
+        
+    }
+}
